@@ -57,7 +57,6 @@ import { monthFirstDay } from 'period-date';
 
 console.log(monthFirstDay()); // 2019-03-01
 console.log(monthFirstDay({ year: 2018, month: 9 })); // 2018-09-01
-2019-03-31
 ```
 
 #### 获取指定月最后一天的日期，默认返回 本月最后一天
