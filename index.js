@@ -150,14 +150,14 @@ function nextMonth({ year = nowDate().year, month = nowDate().month + 1, type = 
 function monthInfo({ year = nowDate().year, month = nowDate().month + 1, type = "-" } = {}) {
     // 1 号是周几
     let date = new Date(year, Number(month) - 1, 1);
-    console.log(date);
     let weekDay = date.getDay();
+    
+    // 0 是星期日，返回 7
+    weekDay = weekDay === 0 ? 7 : weekDay;
+
     // 该月最后一天是几号
     let days = new Date(year, month, 0).getDate();
 
-    // 0 是星期日，返回 7
-    weekDay = weekDay === 0 ? 7 : weekDay
-    console.log(date.getMonth());
     return {
         date: `${date.getFullYear()}${type}${datePlus0(date.getMonth() + 1)}`,
         firstDay: weekDay,
@@ -179,7 +179,7 @@ function monthInfo({ year = nowDate().year, month = nowDate().month + 1, type = 
 function week({ year = nowDate().year, month = nowDate().month + 1, day = nowDate().day, type = "-" } = {}) {
     // 获取到今天是周几，如果是 0 ，说明是周日
     let weekDay = new Date(year, Number(month) - 1, day).getDay();
-    weekDay = weekDay === 0 ? 7 : weekDay
+    weekDay = weekDay === 0 ? 7 : weekDay;
 
     // 周一的日期是，当前日期的 day - weekDay + 1
     let { year: week_start_year, month: week_start_month, day: week_start_day } = optimize(new Date(year, Number(month) - 1, day - weekDay + 1));
@@ -199,7 +199,7 @@ function week({ year = nowDate().year, month = nowDate().month + 1, day = nowDat
  */
 function prevWeek({ year = nowDate().year, month = nowDate().month + 1, day = nowDate().day, type = "-" } = {}) {
     let weekDay = new Date(year, Number(month) - 1, day).getDay();
-    weekDay = weekDay === 0 ? 7 : weekDay
+    weekDay = weekDay === 0 ? 7 : weekDay;
 
     return week({ year, month, day: day - weekDay, type });
 }
@@ -214,7 +214,7 @@ function prevWeek({ year = nowDate().year, month = nowDate().month + 1, day = no
  */
 function nextWeek({ year = nowDate().year, month = nowDate().month + 1, day = nowDate().day, type = "-" } = {}) {
     let weekDay = new Date(year, Number(month) - 1, day).getDay();
-    weekDay = weekDay === 0 ? 7 : weekDay
+    weekDay = weekDay === 0 ? 7 : weekDay;
 
     return week({ year, month, day: day + 8 - weekDay, type });
 }
