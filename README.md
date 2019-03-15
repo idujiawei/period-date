@@ -4,6 +4,21 @@
 
 ### API
 
+#### 将输入日期转换成对象
+
+formatDateString
+
+* @param {string} date 
+* 仅支持一下数据格式：'2019-01-09'、 '2019/01/09'、new Date() 得到的时间值、时间戳
+* @returns {year:xxx, month:xxx, day:xxx}
+
+```js
+import { today } from 'period-date';
+
+console.log(formatDateString()); // {year: 2019, month: "03", day: 15}
+console.log(formatDateString('2019/09/9')); // {year: 2019, month: "09", day: "09"}
+```
+
 #### 获取当天的日期
 
 today
