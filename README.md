@@ -2,6 +2,12 @@
 
 调用方法，返回特定的时间段，适用于动态获取日期。
 
+### Installation
+
+```js
+npm install --save period-date
+```
+
 ### API
 
 #### 将输入日期转换成对象，默认返回当前的日期
