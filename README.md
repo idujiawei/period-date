@@ -13,7 +13,7 @@ formatDateString
 * @returns {year: xxx, month: xxx, day: xxx}
 
 ```js
-import { today } from 'period-date';
+import { formatDateString } from 'period-date';
 
 console.log(formatDateString()); // {year: 2019, month: "03", day: 15}
 console.log(formatDateString('2019/09/9')); // {year: 2019, month: "09", day: "09"}
