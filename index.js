@@ -225,7 +225,8 @@ function nextWeek({ year = nowDate().year, month = nowDate().month + 1, day = no
  * 将输入日期转换成对象
  * 默认返回 当前的日期
  *
- * @param {string} date '2019-01-09'、 '2019/01/09'、new Date() 得到的时间值、时间戳
+ * @param {string} date 默认当前的日期 
+ * 仅支持以下数据格式：'2019-01-09'、 '2019/01/09'、new Date() 得到的时间值、时间戳
  * @returns {year:xxx, month:xxx, day:xxx}
  */
 function formatDateString(date = new Date()) {

@@ -4,13 +4,13 @@
 
 ### API
 
-#### 将输入日期转换成对象
+#### 将输入日期转换成对象，默认返回当前的日期
 
 formatDateString
 
-* @param {string} date 
-* 仅支持一下数据格式：'2019-01-09'、 '2019/01/09'、new Date() 得到的时间值、时间戳
-* @returns {year:xxx, month:xxx, day:xxx}
+* @param {string} date 默认当前的日期
+* 仅支持以下数据格式：'2019-01-09'、 '2019/01/09'、new Date() 得到的时间值、时间戳
+* @returns {year: xxx, month: xxx, day: xxx}
 
 ```js
 import { today } from 'period-date';
