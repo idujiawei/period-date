@@ -150,7 +150,7 @@ week
 * @returns {array} [YYYY-MM-DD, YYYY-MM-DD]
 
 ```js
-import { monthInfo } from 'period-date';
+import { week } from 'period-date';
 
 console.log(week()); // ["2019-03-11", "2019-03-17"]
 console.log(week({ year: 2018, month: 9, day: 10 })); // ["2018-09-10", "2018-09-16"]
