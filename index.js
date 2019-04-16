@@ -122,7 +122,7 @@ function monthLastDay({ year = nowDate().year, month = nowDate().month + 1, type
  * @param {string} [type="-"] 分隔符 默认 '-'
  * @returns {array} [YYYY-MM-DD, YYYY-MM-DD]
  */
-function prevMonth({ year = nowDate().year, month = nowDate().month + 1, type = "-" } = {}) {
+function LastMonth({ year = nowDate().year, month = nowDate().month + 1, type = "-" } = {}) {
     return [monthFirstDay({ year, month: Number(month) - 1, type }), monthLastDay({ year, month: Number(month) - 1, type })];
 }
 
@@ -151,7 +151,7 @@ function monthInfo({ year = nowDate().year, month = nowDate().month + 1, type = 
     // 1 号是周几
     let date = new Date(year, Number(month) - 1, 1);
     let weekDay = date.getDay();
-    
+
     // 0 是星期日，返回 7
     weekDay = weekDay === 0 ? 7 : weekDay;
 
@@ -197,7 +197,7 @@ function week({ year = nowDate().year, month = nowDate().month + 1, day = nowDat
  * @param {string} [type="-"] 分隔符 默认 '-'
  * @returns {array} [YYYY-MM-DD, YYYY-MM-DD]
  */
-function prevWeek({ year = nowDate().year, month = nowDate().month + 1, day = nowDate().day, type = "-" } = {}) {
+function LastWeek({ year = nowDate().year, month = nowDate().month + 1, day = nowDate().day, type = "-" } = {}) {
     let weekDay = new Date(year, Number(month) - 1, day).getDay();
     weekDay = weekDay === 0 ? 7 : weekDay;
 
@@ -233,15 +233,42 @@ function formatDateString(date = new Date()) {
 }
 
 
+/**
+ * 今年
+ *
+ * @param {string} [type="-"]
+ * @returns [YYYY-MM-DD, YYYY-MM-DD]
+ */
+function thisYear(type = "-") {
+    const year = new Date().getFullYear();
+    return [`${year}${type}01${type}01`, `${year}${type}12${type}31`]
+}
+
+
+/**
+ * 去年
+ *
+ * @param {string} [type="-"]
+ * @returns [YYYY-MM-DD, YYYY-MM-DD]
+ */
+function lastYear(type = "-") {
+    const year = new Date().getFullYear();
+    return [`${year - 1}${type}01${type}01`, `${year - 1}${type}12${type}31`]
+}
+
 exports.today = today;
 exports.yesterday = yesterday;
 exports.tomorrow = tomorrow;
 exports.monthFirstDay = monthFirstDay;
 exports.monthLastDay = monthLastDay;
-exports.prevMonth = prevMonth;
+exports.lastMonth = lastMonth;
+exports.prevMonth = lastMonth;
 exports.nextMonth = nextMonth;
 exports.monthInfo = monthInfo;
 exports.week = week;
-exports.prevWeek = prevWeek;
+exports.lastWeek = lastWeek;
+exports.prevWeek = lastWeek;
 exports.nextWeek = nextWeek;
+exports.thisYear = thisYear;
+exports.lastYear = lastYear;
 exports.formatDateString = formatDateString;

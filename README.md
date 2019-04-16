@@ -98,16 +98,16 @@ console.log(monthLastDay({ year: 2018, month: 9 })); // 2018-09-30
 
 #### 上个月时间段，默认返回当前月的 上个月
 
-prevMonth
+lastMonth
 
 * @param {string} [type="-"] 分隔符 默认 '-'
 * @returns {array} [YYYY-MM-DD, YYYY-MM-DD]
 
 ```js
-import { prevMonth } from 'period-date';
+import { lastMonth } from 'period-date';
 
-console.log(prevMonth()); // ["2019-02-01", "2019-02-28"]
-console.log(prevMonth({ year: 2018, month: 9 })); // ["2018-08-01", "2018-08-31"]
+console.log(lastMonth()); // ["2019-02-01", "2019-02-28"]
+console.log(lastMonth({ year: 2018, month: 9 })); // ["2018-08-01", "2018-08-31"]
 ```
 
 #### 下个月时间段，默认返回当前月的 下个月
@@ -158,16 +158,16 @@ console.log(week({ year: 2018, month: 9, day: 10 })); // ["2018-09-10", "2018-09
 
 #### 获取指定日期 的 上周的日期时间段，默认返回 当前周的上周
 
-prevWeek
+lastWeek
 
 * @param {string} [type="-"] 分隔符 默认 '-'
 * @returns {array} [YYYY-MM-DD, YYYY-MM-DD]
 
 ```js
-import { prevWeek } from 'period-date';
+import { lastWeek } from 'period-date';
 
-console.log(prevWeek()); // ["2019-03-04", "2019-03-10"]
-console.log(prevWeek({ year: 2018, month: 9, day: 10 })); // ["2018-09-03", "2018-09-09"]
+console.log(lastWeek()); // ["2019-03-04", "2019-03-10"]
+console.log(lastWeek({ year: 2018, month: 9, day: 10 })); // ["2018-09-03", "2018-09-09"]
 ```
 
 #### 获取指定日期 的 下周的时间段，默认返回 当前周的下周
@@ -182,5 +182,32 @@ import { nextWeek } from 'period-date';
 
 console.log(nextWeek()); // ["2019-03-18", "2019-03-24"]
 console.log(nextWeek({ year: 2018, month: 9, day: 10 })); // ["2018-09-17", "2018-09-23"]
+```
+
+#### 获取今年的时间段
+
+thisYear
+
+* @param {string} [type="-"]
+* @returns [YYYY-MM-DD, YYYY-MM-DD]
+
+```js
+import { thisYear } from 'period-date';
+
+console.log(thisYear()); // ["2019-01-01", "2019-12-31"]
+```
+
+
+#### 获取去年的时间段
+
+lastYear
+
+* @param {string} [type="-"]
+* @returns [YYYY-MM-DD, YYYY-MM-DD]
+
+```js
+import { lastYear } from 'period-date';
+
+console.log(lastYear()); // ["2018-01-01", "2018-12-31"]
 ```
 
