@@ -122,7 +122,7 @@ function monthLastDay({ year = nowDate().year, month = nowDate().month + 1, type
  * @param {string} [type="-"] 分隔符 默认 '-'
  * @returns {array} [YYYY-MM-DD, YYYY-MM-DD]
  */
-function LastMonth({ year = nowDate().year, month = nowDate().month + 1, type = "-" } = {}) {
+function lastMonth({ year = nowDate().year, month = nowDate().month + 1, type = "-" } = {}) {
     return [monthFirstDay({ year, month: Number(month) - 1, type }), monthLastDay({ year, month: Number(month) - 1, type })];
 }
 
@@ -197,7 +197,7 @@ function week({ year = nowDate().year, month = nowDate().month + 1, day = nowDat
  * @param {string} [type="-"] 分隔符 默认 '-'
  * @returns {array} [YYYY-MM-DD, YYYY-MM-DD]
  */
-function LastWeek({ year = nowDate().year, month = nowDate().month + 1, day = nowDate().day, type = "-" } = {}) {
+function lastWeek({ year = nowDate().year, month = nowDate().month + 1, day = nowDate().day, type = "-" } = {}) {
     let weekDay = new Date(year, Number(month) - 1, day).getDay();
     weekDay = weekDay === 0 ? 7 : weekDay;
 
