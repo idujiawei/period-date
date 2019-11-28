@@ -86,6 +86,18 @@ function tomorrow(type = '-') {
 
 
 /**
+ * 当前月
+ *
+ * @param {*} [{ year = nowDate().year, month = nowDate().month + 1, type = "-" }={}]
+ * @returns
+ */
+function currentMonth({ year = nowDate().year, month = nowDate().month + 1, type = "-" } = {}) {
+    let { year: _year, month: _month } = optimize(new Date(year, Number(month) - 1, 1));
+    return `${_year}${type}${_month}`;
+}
+
+
+/**
  * 获取指定月 1号
  * 默认返回 本月1号
  *
@@ -259,6 +271,7 @@ function lastYear(type = "-") {
 exports.today = today;
 exports.yesterday = yesterday;
 exports.tomorrow = tomorrow;
+exports.currentMonth = currentMonth;
 exports.monthFirstDay = monthFirstDay;
 exports.monthLastDay = monthLastDay;
 exports.lastMonth = lastMonth;

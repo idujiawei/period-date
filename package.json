@@ -1,6 +1,6 @@
 {
   "name": "period-date",
-  "version": "1.1.1",
+  "version": "1.1.3",
   "description": "调用方法，返回特定的时间段，适用于动态获取时间段。",
   "main": "index.js",
   "scripts": {
