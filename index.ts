@@ -25,7 +25,7 @@ export function datePlus0(x: number): number | string {
  *
  * @returns {year, month, day}
  */
-export function nowDate(): year {
+export function nowDate(): any {
     return {
         year: new Date().getFullYear(),
         month: new Date().getMonth(),
@@ -40,7 +40,7 @@ export function nowDate(): year {
  * @param {Object} Date Object
  * @returns {year, month, day}
  */
-export function optimize(date: Date): year {
+export function optimize(date: Date): any {
     return {
         year: date.getFullYear(),
         month: datePlus0(date.getMonth() + 1),
@@ -106,7 +106,7 @@ export function currentMonth({ year = nowDate().year, month = nowDate().month + 
  * @param {string} type  分隔符 默认 '-'
  * @returns {string} YYYY-MM-DD
  */
-export function monthFirstDay({ year = nowDate().year, month = nowDate().month + 1, type = "-" }: number = {}): string {
+export function monthFirstDay({ year = nowDate().year, month = nowDate().month + 1, type = "-" }: any = {}): string {
     let { year: _year, month: _month, day: _day } = optimize(new Date(year, Number(month) - 1, 1));
     return `${_year}${type}${_month}${type}${_day}`;
 }
@@ -121,7 +121,7 @@ export function monthFirstDay({ year = nowDate().year, month = nowDate().month +
  * @param {string} type  分隔符 默认 '-'
  * @returns {string} YYYY-MM-DD
  */
-export function monthLastDay({ year = nowDate().year, month = nowDate().month + 1, type = "-" }: number = {}): string {
+export function monthLastDay({ year = nowDate().year, month = nowDate().month + 1, type = "-" }: any = {}): string {
     let { year: _year, month: _month, day: _day } = optimize(new Date(year, month, 0));
     return `${_year}${type}${_month}${type}${_day}`;
 }
@@ -134,7 +134,7 @@ export function monthLastDay({ year = nowDate().year, month = nowDate().month + 
  * @param {string} [type="-"] 分隔符 默认 '-'
  * @returns {array} [YYYY-MM-DD, YYYY-MM-DD]
  */
-export function lastMonth({ year = nowDate().year, month = nowDate().month + 1, type = "-" }: string = {}): Array<any> {
+export function lastMonth({ year = nowDate().year, month = nowDate().month + 1, type = "-" }: any = {}): Array<any> {
     return [monthFirstDay({ year, month: Number(month) - 1, type }), monthLastDay({ year, month: Number(month) - 1, type })];
 }
 
@@ -146,7 +146,7 @@ export function lastMonth({ year = nowDate().year, month = nowDate().month + 1, 
  * @param {string} [type='-'] 分隔符 默认 '-'
  * @returns {array} [YYYY-MM-DD, YYYY-MM-DD]
  */
-export function nextMonth({ year = nowDate().year, month = nowDate().month + 1, type = "-" }: string = {}): Array<any> {
+export function nextMonth({ year = nowDate().year, month = nowDate().month + 1, type = "-" }: any = {}): Array<any> {
     return [monthFirstDay({ year, month: Number(month) + 1, type }), monthLastDay({ year, month: Number(month) + 1, type })];
 }
 
@@ -159,7 +159,7 @@ export function nextMonth({ year = nowDate().year, month = nowDate().month + 1, 
  * @param {number} month  月 默认本月
  * @returns {object} date:日期、firstDay:1号是周几、days:该月的天数
  */
-export function monthInfo({ year = nowDate().year, month = nowDate().month + 1, type = "-" }: number = {}): object {
+export function monthInfo({ year = nowDate().year, month = nowDate().month + 1, type = "-" }: any = {}): object {
     // 1 号是周几
     let date = new Date(year, Number(month) - 1, 1);
     let weekDay = date.getDay();
@@ -188,7 +188,7 @@ export function monthInfo({ year = nowDate().year, month = nowDate().month + 1, 
  * @param {string} type  分隔符 默认 '-'
  * @returns {array} [YYYY-MM-DD, YYYY-MM-DD]
  */
-export function week({ year = nowDate().year, month = nowDate().month + 1, day = nowDate().day, type = "-" }: number = {}): Array<any> {
+export function week({ year = nowDate().year, month = nowDate().month + 1, day = nowDate().day, type = "-" }: any = {}): Array<any> {
     // 获取到今天是周几，如果是 0 ，说明是周日
     let weekDay = new Date(year, Number(month) - 1, day).getDay();
     weekDay = weekDay === 0 ? 7 : weekDay;
@@ -209,7 +209,7 @@ export function week({ year = nowDate().year, month = nowDate().month + 1, day =
  * @param {string} [type="-"] 分隔符 默认 '-'
  * @returns {array} [YYYY-MM-DD, YYYY-MM-DD]
  */
-export function lastWeek({ year = nowDate().year, month = nowDate().month + 1, day = nowDate().day, type = "-" }: string = {}): Array<any> {
+export function lastWeek({ year = nowDate().year, month = nowDate().month + 1, day = nowDate().day, type = "-" }: any = {}): Array<any> {
     let weekDay = new Date(year, Number(month) - 1, day).getDay();
     weekDay = weekDay === 0 ? 7 : weekDay;
 
@@ -224,7 +224,7 @@ export function lastWeek({ year = nowDate().year, month = nowDate().month + 1, d
  * @param {string} [type="-"] 分隔符 默认 '-'
  * @returns {array} [YYYY-MM-DD, YYYY-MM-DD]
  */
-export function nextWeek({ year = nowDate().year, month = nowDate().month + 1, day = nowDate().day, type = "-" }: string = {}): Array<any> {
+export function nextWeek({ year = nowDate().year, month = nowDate().month + 1, day = nowDate().day, type = "-" }: any = {}): Array<any> {
     let weekDay = new Date(year, Number(month) - 1, day).getDay();
     weekDay = weekDay === 0 ? 7 : weekDay;
 
@@ -240,7 +240,7 @@ export function nextWeek({ year = nowDate().year, month = nowDate().month + 1, d
  * 仅支持以下数据格式：'2019-01-09'、 '2019/01/09'、new Date() 得到的时间值、时间戳
  * @returns {year:xxx, month:xxx, day:xxx}
  */
-export function formatDateString(date: string = new Date()): year {
+export function formatDateString(date: any): any {
     return optimize(new Date(date));
 }
 
